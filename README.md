@@ -1,15 +1,18 @@
 # My location
 
-<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img1.jpeg" width="150">
+<div style="display: flex; justify-content: center;">
+<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img1.jpeg" width="200" style="margin-right: 10px;">
 
-![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img2.jpeg)
+<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img2.jpeg" width="200" style="margin-right: 10px;">
 
-![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img3.jpeg)
+<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img3.jpeg" width="200" style="margin-right: 10px;">
 
-![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img4.jpeg)
+<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img4.jpeg" width="200" style="margin-right: 10px;">
+</div>
 
 ### Objetivo do app
 O objetivo do app é rodar tanto em Android quanto iOS, para apresentar a localização atual do usuário no mapa tanto com o serviço de localização ativo quanto inativo, caso esteja inativa a localização será requisitada em uma API e ela devolverá a localização aproximada e então um marcador será adicionado ao mapa, caso o usuário esteja sem internet a ultima localização retornada por essa API será apresentada.
+
 
 ### Requerimentos do app
 * O GPS deve ser usado para recuperar a localização atual (testar com o GPS ativado e desativado)
