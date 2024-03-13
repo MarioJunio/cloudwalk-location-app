@@ -1,12 +1,12 @@
 # My location
 
-<img src="https://github.com/MarioJunio/cloudwalk_location/blob/main/images/img1.jpeg" width="150">
+<img src="https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img1.jpeg" width="150">
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/img2.jpeg)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img2.jpeg)
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/img3.jpeg)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img3.jpeg)
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/img4.jpeg)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/img4.jpeg)
 
 ### Objetivo do app
 O objetivo do app é rodar tanto em Android quanto iOS, para apresentar a localização atual do usuário no mapa tanto com o serviço de localização ativo quanto inativo, caso esteja inativa a localização será requisitada em uma API e ela devolverá a localização aproximada e então um marcador será adicionado ao mapa, caso o usuário esteja sem internet a ultima localização retornada por essa API será apresentada.
@@ -33,12 +33,12 @@ flutter run
 ## Arquitetura
 Para melhor entedimento, legibilidade, manuntenabilidade e para seguirmos os príncipios do SOLID eu escolhi utilizar a arquitetura limpa(clean architecture) que já é consolidada em projetos flutter e que podem ser segregados em vários microapps sem grandes dificuldades, segue abaixo um esboço dessa arquitetura:
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/clean_arc_flutter.png)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/clean_arc_flutter.png)
 
 ### Gerenciamento de estado
 O gerenciamento de estado da aplicação foi feito utilizando ChangeNotifier, eu decidi utilizá-lo pela simplicidade, por faz parte do Flutter framework, e se integra bem com as features do flutter, com ele conseguimos segregar a regra de negócio da view e coloca-lá em um controller e sempre que precisarmos fazer alguma atualização de estado na tela podemos fazer isso invidualmente em cada Widget sem precisar reconstruir a árvore de widgets novamente para atualizar somente um widget específico, e alem de possuir uma curva de aprendizado bem rápida.
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/change_notifier.jpeg)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/change_notifier.jpeg)
 
 ### Freezed - Data class
 Para criação de entitidades e modelos que serão utilizados para recuperar e exibir dados de forma estruturada foi utilizado a lib freezed que auxilia na criação e geração dessas classes de modelo para os dados, para realizar a geração dessas classes basta rodar o seguinte comando:
@@ -49,7 +49,7 @@ dart run build_runner build --delete-conflicting-outputs
 ### Módulos e injeção de dependências
 Para modularizar a aplicação e pensando na expansão a longo prazo eu decidi separar as features por domínio e dentro de cada domínio(módulo) temos um arquivo para registrar as depêndencias com a seguinte nomenclatura `<nome módulo>_di.dart` foi utilizado a lib `get_it` para fazer o controle do registro e injeção de dependências, dessa forma a separação de responsabilidades é alcançada e subdividir em módulos com diferentes propósitos melhora a sustentação do app a longo prazo sendo possível equipes distintas trabalharem em módulos específicos. A injeção de dependências e segregação em módulos também pode ser feita utilizando o `flutter_modular` pois ele permite que você faça os binds dos seus datasources, repositórios, usecases e controllers dentro de cada módulo. 
 
-![](https://github.com/MarioJunio/cloudwalk_location/blob/main/images/module_architecture.png)
+![](https://github.com/MarioJunio/cloudwalk-location-app/blob/develop/images/module_architecture.png)
 
 ### Cache de dados
 O cache de dados foi feito utilizando a lib `hive` que é um banco de dados de chave-valor rápido, a chamada de busca pela localização utilizando a API é interceptada e a resposta é gravada no banco de dados com a chave estruturada da seguinte forma: `<http_method:http_path>` = `<http_response>`, então caso não haja conexão com a internet será obtido os dados em cache da última requisição http para a API bem sucedida.
